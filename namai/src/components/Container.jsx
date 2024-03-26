@@ -11,9 +11,9 @@ export const Container = () => {
 
   return (
     <div className="container">
-        <button onClick={taskHandler}>Switch Task</button>
+      <button onClick={taskHandler}>Switch Task</button>
       {task === "Pirmas" ? <Pirmas /> : <Antras />}
 
     </div>
   );
-};
+}
