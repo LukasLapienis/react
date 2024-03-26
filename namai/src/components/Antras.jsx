@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 export const Antras = () => {
   const [squares, setSquares] = useState([]);
 
-  const addHandler = () => {
+  const handleAdd = () => {
     setSquares((prev) => [...prev, { id: prev.length, counter: 0 }]);
   };
 
@@ -17,7 +17,7 @@ export const Antras = () => {
 
   return (
     <div className="container">
-      <button onClick={addHandler}>Add</button>
+      <button onClick={handleAdd}>Add</button>
 
       <div className="squaresContainer">
         {squares.map((square) => (
