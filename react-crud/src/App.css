@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+.cardsContainer {
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid black;
+  width: 150px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}

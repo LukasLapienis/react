@@ -47,3 +47,11 @@
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
+
+.cardsContainer {
+  display: flex;
+}
+
+.card {
+  border: 1px solid black;
+}
