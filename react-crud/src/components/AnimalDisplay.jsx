@@ -1,22 +1,34 @@
 import React, { useState, useEffect } from 'react';
+import { AnimalEditModal } from './AnimalEditModal';
 
-export const AnimalDisplay = () => {
-  const [animals, setAnimals] = useState([]);
+export const AnimalDisplay = ({ animalsData, setAnimalsData }) => {
+  const [animals, setAnimals] = useState(animalsData);
   const [sortBy, setSortBy] = useState('name');
   const [sortDirection, setSortDirection] = useState('ascending');
+  const [isOpen, setIsOpen] = useState(false);
+  const [animalId, setAnimalId] = useState('');
 
   useEffect(() => {
     const animalsFromLs = localStorage.getItem('animals');
     const parsedAnimals = animalsFromLs ? JSON.parse(animalsFromLs) : [];
     setAnimals(parsedAnimals);
+    setAnimalsData(parsedAnimals);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('animals', JSON.stringify(animals));
+    setAnimalsData(animals);
   }, [animals]);
 
-  const handleEdit = (id) => {
-    setAnimals();
+  const handleEditModal = (id) => {
+    setIsOpen(true);
+    setAnimalId(id);
   };
 
   const handleDelete = (id) => {
-    setAnimals();
+    const updatedAnimals = animalsData.filter((animal) => animal.id !== id);
+    setAnimals(updatedAnimals);
+    setAnimalsData(updatedAnimals);
   };
 
   const handleSortBy = (sort) => {
@@ -75,13 +87,13 @@ export const AnimalDisplay = () => {
                 }
               ></i>
             </td>
-            <td onClick={() => handleEdit()}>Edit</td>
-            <td onClick={() => handleDelete()}>Delete</td>
+            <td>Edit</td>
+            <td>Delete</td>
           </tr>
         </thead>
         <tbody>
-          {animals &&
-            animals
+          {animalsData &&
+            animalsData
               .sort((a, b) => {
                 let aValue = a[sortBy];
                 let bValue = b[sortBy];
@@ -100,21 +112,33 @@ export const AnimalDisplay = () => {
                 }
               })
               .map((animal, index) => (
-                <tr key={index} className="card">
+                <tr key={animal.id} className="card">
                   <td>{animal.name}</td>
                   <td>{animal.weight}</td>
                   <td>{animal.group}</td>
                   <td>{animal.isInZoo}</td>
                   <td>
-                    <button>Edit</button>
+                    <button onClick={() => handleEditModal(animal.id)}>
+                      Edit
+                    </button>
                   </td>
                   <td>
-                    <button>Delete</button>
+                    <button onClick={() => handleDelete(animal.id)}>
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
         </tbody>
       </table>
+      {isOpen && (
+        <AnimalEditModal
+          animalsData={animalsData}
+          animalId={animalId}
+          setIsOpen={setIsOpen}
+          setAnimalsData={setAnimalsData}
+        />
+      )}
     </div>
   );
 };

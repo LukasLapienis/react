@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
-export const AnimalInput = () => {
-  const [animals, setAnimals] = useState([]);
+export const AnimalInput = ({ animalsData, setAnimalsData }) => {
+  const [animals, setAnimals] = useState(animalsData);
   const [name, setName] = useState('');
   const [group, setGroup] = useState('bird');
   const [weight, setWeight] = useState('');
   const [isInZoo, setIsInZoo] = useState('No');
 
   useEffect(() => {
-    const storedAnimals = JSON.parse(localStorage.getItem('animals'));
-    if (storedAnimals) {
-      setAnimals(storedAnimals);
-    }
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem('animals', JSON.stringify(animals));
   }, [animals]);
+
+  const generateUniqueId = () => {
+    return Date.now().toString(36) + Math.random().toString(36).substr(2);
+  };
 
   const handleAnimalInput = (e) => {
     e.preventDefault();
@@ -28,7 +25,24 @@ export const AnimalInput = () => {
 
     setAnimals((prev) => [
       ...prev,
-      { name: name, group: group, weight: weight, isInZoo: isInZoo },
+      {
+        id: generateUniqueId(),
+        name: name,
+        group: group,
+        weight: weight,
+        isInZoo: isInZoo,
+      },
+    ]);
+
+    setAnimalsData((prev) => [
+      ...prev,
+      {
+        id: generateUniqueId(),
+        name: name,
+        group: group,
+        weight: weight,
+        isInZoo: isInZoo,
+      },
     ]);
     setName('');
     setWeight('');

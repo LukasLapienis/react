@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export const Antras = () => {
   const [dataFromAPI, setDataFromAPI] = useState([]);
   const [isLoading, setIsloading] = useState(true);
 
   useEffect(() => {
-    axios.get("https://reqres.in/api/users?delay=3").then((res) => {
+    axios.get('https://reqres.in/api/users?delay=3').then((res) => {
       setDataFromAPI(res.data.data);
       setIsloading(false);
     });

@@ -1,12 +1,10 @@
 import './App.css';
-import { AnimalDisplay } from './components/AnimalDisplay';
-import { AnimalInput } from './components/AnimalInput';
+import { AnimalsContainer } from './components/AnimalsContainer';
 
 function App() {
   return (
     <div className="App">
-      <AnimalInput />
-      <AnimalDisplay />
+      <AnimalsContainer />
     </div>
   );
 }
