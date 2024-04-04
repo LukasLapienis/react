@@ -1,24 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { AnimalEditModal } from './AnimalEditModal';
 
 export const AnimalDisplay = ({ animalsData, setAnimalsData }) => {
-  const [animals, setAnimals] = useState(animalsData);
   const [sortBy, setSortBy] = useState('name');
   const [sortDirection, setSortDirection] = useState('ascending');
   const [isOpen, setIsOpen] = useState(false);
   const [animalId, setAnimalId] = useState('');
-
-  useEffect(() => {
-    const animalsFromLs = localStorage.getItem('animals');
-    const parsedAnimals = animalsFromLs ? JSON.parse(animalsFromLs) : [];
-    setAnimals(parsedAnimals);
-    setAnimalsData(parsedAnimals);
-  }, [setAnimalsData]);
-
-  useEffect(() => {
-    localStorage.setItem('animals', JSON.stringify(animals));
-    setAnimalsData(animals);
-  }, [animals, setAnimalsData]);
 
   const handleEditModal = (id) => {
     setIsOpen(true);
@@ -27,7 +14,6 @@ export const AnimalDisplay = ({ animalsData, setAnimalsData }) => {
 
   const handleDelete = (id) => {
     const updatedAnimals = animalsData.filter((animal) => animal.id !== id);
-    setAnimals(updatedAnimals);
     setAnimalsData(updatedAnimals);
   };
 
@@ -42,50 +28,28 @@ export const AnimalDisplay = ({ animalsData, setAnimalsData }) => {
     }
   };
 
+  const sortingArrow = (
+    <i
+      className={
+        sortDirection === 'ascending'
+          ? 'fa fa-arrow-circle-down'
+          : 'fa fa-arrow-circle-up'
+      }
+    ></i>
+  );
+
   return (
     <div className="cardsContainer">
       <table className="displayTable">
         <thead>
           <tr>
-            <td onClick={() => handleSortBy('name')}>
-              Name{' '}
-              <i
-                className={
-                  sortDirection === 'ascending'
-                    ? 'fa fa-arrow-circle-down'
-                    : 'fa fa-arrow-circle-up'
-                }
-              ></i>
-            </td>
+            <td onClick={() => handleSortBy('name')}>Name {sortingArrow}</td>
             <td onClick={() => handleSortBy('weight')}>
-              Weight{' '}
-              <i
-                className={
-                  sortDirection === 'ascending'
-                    ? 'fa fa-arrow-circle-down'
-                    : 'fa fa-arrow-circle-up'
-                }
-              ></i>
+              Weight {sortingArrow}
             </td>
-            <td onClick={() => handleSortBy('group')}>
-              Group{' '}
-              <i
-                className={
-                  sortDirection === 'ascending'
-                    ? 'fa fa-arrow-circle-down'
-                    : 'fa fa-arrow-circle-up'
-                }
-              ></i>
-            </td>
+            <td onClick={() => handleSortBy('group')}>Group {sortingArrow}</td>
             <td onClick={() => handleSortBy('isInZoo')}>
-              Is In Zoo?{' '}
-              <i
-                className={
-                  sortDirection === 'ascending'
-                    ? 'fa fa-arrow-circle-down'
-                    : 'fa fa-arrow-circle-up'
-                }
-              ></i>
+              Is In Zoo? {sortingArrow}
             </td>
             <td>Edit</td>
             <td>Delete</td>

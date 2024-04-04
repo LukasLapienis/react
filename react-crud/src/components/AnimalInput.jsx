@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-export const AnimalInput = ({ animalsData, setAnimalsData }) => {
-  const [animals, setAnimals] = useState(animalsData);
-  const [name, setName] = useState('');
-  const [group, setGroup] = useState('bird');
-  const [weight, setWeight] = useState('');
-  const [isInZoo, setIsInZoo] = useState('No');
-
-  useEffect(() => {
-    localStorage.setItem('animals', JSON.stringify(animals));
-  }, [animals]);
-
+export const AnimalInput = ({
+  setAnimalsData,
+  name,
+  setName,
+  group,
+  setGroup,
+  weight,
+  setWeight,
+  isInZoo,
+  setIsInZoo,
+}) => {
   const generateUniqueId = () => {
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
   };
@@ -22,17 +22,6 @@ export const AnimalInput = ({ animalsData, setAnimalsData }) => {
       alert('Please fill all fields.');
       return;
     }
-
-    setAnimals((prev) => [
-      ...prev,
-      {
-        id: generateUniqueId(),
-        name: name,
-        group: group,
-        weight: weight,
-        isInZoo: isInZoo,
-      },
-    ]);
 
     setAnimalsData((prev) => [
       ...prev,

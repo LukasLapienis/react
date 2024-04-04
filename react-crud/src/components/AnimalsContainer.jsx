@@ -9,10 +9,10 @@ export const AnimalsContainer = () => {
     return storedAnimals || [];
   });
 
-  //   const [name, setName] = useState('');
-  //   const [group, setGroup] = useState('bird');
-  //   const [weight, setWeight] = useState('');
-  //   const [isInZoo, setIsInZoo] = useState('No');
+  const [name, setName] = useState('');
+  const [group, setGroup] = useState('bird');
+  const [weight, setWeight] = useState('');
+  const [isInZoo, setIsInZoo] = useState('No');
 
   useEffect(() => {
     localStorage.setItem('animals', JSON.stringify(animalsData));
@@ -20,7 +20,18 @@ export const AnimalsContainer = () => {
 
   return (
     <div>
-      <AnimalInput animalsData={animalsData} setAnimalsData={setAnimalsData} />
+      <AnimalInput
+        animalsData={animalsData}
+        setAnimalsData={setAnimalsData}
+        name={name}
+        setName={setName}
+        group={group}
+        setGroup={setGroup}
+        weight={weight}
+        setWeight={setWeight}
+        isInZoo={isInZoo}
+        setIsInZoo={setIsInZoo}
+      />
       <AnimalDisplay
         animalsData={animalsData}
         setAnimalsData={setAnimalsData}
