@@ -44,7 +44,7 @@ export const AnimalDisplay = ({ animalsData, setAnimalsData }) => {
 
   return (
     <div className="cardsContainer">
-      <table>
+      <table className="displayTable">
         <thead>
           <tr>
             <td onClick={() => handleSortBy('name')}>

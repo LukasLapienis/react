@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const AnimalEditModal = ({
   animalsData,
@@ -8,19 +8,42 @@ export const AnimalEditModal = ({
   setIsOpen,
 }) => {
   const animal = animalsData.find((el) => el.id === animalId);
-  console.log(animal);
 
   const [groupEdit, setGroupEdit] = useState(animal.group);
   const [isInZoo, setIsInZoo] = useState(animal.isInZoo);
   const [nameEdit, setNameEdit] = useState(animal.name);
+  const [weightEdit, setWeightEdit] = useState(animal.weight);
 
-  const handleEdit = () => {
-    setAnimalsData();
+  const handleEdit = (e) => {
+    e.preventDefault();
     setIsOpen(false);
+    setAnimalsData((prevAnimals) => {
+      return prevAnimals.map((prevAnimal) => {
+        if (prevAnimal.id === animalId) {
+          return {
+            id: animalId,
+            name: nameEdit,
+            group: groupEdit,
+            weight: weightEdit,
+            isInZoo: isInZoo,
+          };
+        }
+        return prevAnimal;
+      });
+    });
+    alert('updated');
   };
 
-  const handleNameEdit = () => {
-    // setNameEdit(animalsData.map(animal) => animal.id === animalId ? );
+  const handleNameEdit = (e) => {
+    setNameEdit(e.target.value);
+  };
+
+  const handleWeightEdit = (e) => {
+    setWeightEdit(e.target.value);
+  };
+
+  const handleGroupEdit = (e) => {
+    setGroupEdit(e.target.value);
   };
 
   const handleZooInputEdit = () => {
@@ -41,14 +64,14 @@ export const AnimalEditModal = ({
           <label htmlFor="nameEdit">Animal Name:</label>
           <input
             type="text"
-            value={animal.name}
+            value={nameEdit}
             name="nameEdit"
             onChange={handleNameEdit}
           />
           <label htmlFor="weightEdit">Animal Weight:</label>
-          <input type="number" value={animal.weight} />
+          <input type="number" value={weightEdit} onChange={handleWeightEdit} />
           <select
-            onChange={(e) => setGroupEdit(e.target.value)}
+            onChange={handleGroupEdit}
             value={groupEdit}
             className="groupSelectEdit"
           >
