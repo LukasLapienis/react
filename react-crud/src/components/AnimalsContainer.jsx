@@ -8,14 +8,14 @@ export const AnimalsContainer = () => {
     const storedAnimals = JSON.parse(animalsFromLs);
     return storedAnimals || [];
   });
-  const [sortBy, setSortBy] = useState('name');
-  const [sortDirection, setSortDirection] = useState('ascending');
-  const [isOpen, setIsOpen] = useState(false);
-  const [animalId, setAnimalId] = useState('');
+
+  //   const [name, setName] = useState('');
+  //   const [group, setGroup] = useState('bird');
+  //   const [weight, setWeight] = useState('');
+  //   const [isInZoo, setIsInZoo] = useState('No');
 
   useEffect(() => {
     localStorage.setItem('animals', JSON.stringify(animalsData));
-    console.log(animalsData);
   }, [animalsData]);
 
   return (

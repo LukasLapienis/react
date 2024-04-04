@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export const AnimalEditModal = ({
   animalsData,
@@ -50,14 +50,16 @@ export const AnimalEditModal = ({
     setIsInZoo(isInZoo === 'Yes' ? 'No' : 'Yes');
   };
 
-  const handleModalClose = () => {
+  const handleModalClose = (e) => {
+    e.preventDefault();
     setIsOpen(false);
   };
 
   return (
-    <div className="modal-overlay">
+    <div className="modal-overlay" onClick={handleModalClose}>
       <div
         className="modal"
+        onClick={(e) => e.stopPropagation()}
         style={{ backgroundColor: 'cyan', height: '200px', width: '200px' }}
       >
         <form>

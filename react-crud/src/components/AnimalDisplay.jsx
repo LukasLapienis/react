@@ -13,12 +13,12 @@ export const AnimalDisplay = ({ animalsData, setAnimalsData }) => {
     const parsedAnimals = animalsFromLs ? JSON.parse(animalsFromLs) : [];
     setAnimals(parsedAnimals);
     setAnimalsData(parsedAnimals);
-  }, []);
+  }, [setAnimalsData]);
 
   useEffect(() => {
     localStorage.setItem('animals', JSON.stringify(animals));
     setAnimalsData(animals);
-  }, [animals]);
+  }, [animals, setAnimalsData]);
 
   const handleEditModal = (id) => {
     setIsOpen(true);
@@ -111,7 +111,7 @@ export const AnimalDisplay = ({ animalsData, setAnimalsData }) => {
                   return aValue < bValue ? 1 : -1;
                 }
               })
-              .map((animal, index) => (
+              .map((animal) => (
                 <tr key={animal.id} className="card">
                   <td>{animal.name}</td>
                   <td>{animal.weight}</td>
