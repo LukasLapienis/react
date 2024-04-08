@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('../public/background.webp');
+  object-fit: cover;
+  background-size: 100%;
 }
 
 code {

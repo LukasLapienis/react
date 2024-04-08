@@ -4,12 +4,12 @@ import { AnimalEditModal } from './AnimalEditModal';
 export const AnimalDisplay = ({ animalsData, setAnimalsData }) => {
   const [sortBy, setSortBy] = useState('name');
   const [sortDirection, setSortDirection] = useState('ascending');
-  const [isOpen, setIsOpen] = useState(false);
-  const [animalId, setAnimalId] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedAnimalId, setSelectedAnimalId] = useState('');
 
   const handleEditModal = (id) => {
-    setIsOpen(true);
-    setAnimalId(id);
+    setIsModalOpen(true);
+    setSelectedAnimalId(id);
   };
 
   const handleDelete = (id) => {
@@ -95,11 +95,11 @@ export const AnimalDisplay = ({ animalsData, setAnimalsData }) => {
               ))}
         </tbody>
       </table>
-      {isOpen && (
+      {isModalOpen && (
         <AnimalEditModal
           animalsData={animalsData}
-          animalId={animalId}
-          setIsOpen={setIsOpen}
+          selectedAnimalId={selectedAnimalId}
+          setIsModalOpen={setIsModalOpen}
           setAnimalsData={setAnimalsData}
         />
       )}

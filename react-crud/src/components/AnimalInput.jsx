@@ -1,16 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export const AnimalInput = ({
-  setAnimalsData,
-  name,
-  setName,
-  group,
-  setGroup,
-  weight,
-  setWeight,
-  isInZoo,
-  setIsInZoo,
-}) => {
+export const AnimalInput = ({ setAnimalsData }) => {
+  const [name, setName] = useState('');
+  const [group, setGroup] = useState('bird');
+  const [weight, setWeight] = useState('');
+  const [isInZoo, setIsInZoo] = useState('No');
+
   const generateUniqueId = () => {
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
   };
@@ -39,7 +34,7 @@ export const AnimalInput = ({
   };
 
   const handleNameInput = (e) => {
-    setName(e.target.value);
+    setName(e.target.value.replace(/[^A-Za-z]/gi, ''));
   };
 
   const handleWeightInput = (e) => {
@@ -52,9 +47,7 @@ export const AnimalInput = ({
 
   return (
     <div className="formContainer">
-      <h2>Zoo Manager</h2>
-
-      <div>
+      <div className="form">
         <input
           type="text"
           value={name}
@@ -69,6 +62,16 @@ export const AnimalInput = ({
           value={weight}
           onChange={handleWeightInput}
         />
+        <div className="isInZooInput">
+          <label htmlFor="isInZooInput">Is In Zoo?</label>
+          <input
+            className="checkbox"
+            type="checkbox"
+            name="isInZooInput"
+            onChange={handleZooInput}
+            checked={isInZoo === 'Yes' ? true : false}
+          />
+        </div>
         <select
           onChange={(e) => setGroup(e.target.value)}
           value={group}
@@ -80,15 +83,6 @@ export const AnimalInput = ({
           <option value="amphibian"> Amphibian </option>
           <option value="fish"> Fish </option>
         </select>
-        <div>
-          <label htmlFor="isInZooInput">Is In Zoo?</label>
-          <input
-            type="checkbox"
-            name="isInZooInput"
-            onChange={handleZooInput}
-            checked={isInZoo === 'Yes' ? true : false}
-          />
-        </div>
 
         <button onClick={handleAnimalInput}>Add Animal</button>
       </div>
