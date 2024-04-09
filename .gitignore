@@ -3,6 +3,7 @@
 # dependencies
 react-sql/backend/node_modules
 react-sql/frontend/node_modules
+react-localStorage-crud/node_modules
 /.pnp
 .pnp.js
 

@@ -1,12 +1,19 @@
-import React, { useState } from "react";
-import { Animal } from "./Animal";
+import React, { useState } from 'react';
+import { Animal } from './Animal';
+import { EditModal } from './EditModal';
 
-export const AnimalsList = ({ animalList, handleDelete }) => {
-  const [showId, setShowId] = useState("");
+export const AnimalsList = ({
+  animalList,
+  handleDelete,
+  setEdit,
+  showId,
+  setShowId,
+}) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="animalList">
-      {animalList === "undefined" ? (
+      {animalList === 'undefined' ? (
         <div>Loading...</div>
       ) : (
         animalList.map((animal) => {
@@ -16,10 +23,18 @@ export const AnimalsList = ({ animalList, handleDelete }) => {
               animal={animal}
               handleDelete={handleDelete}
               setShowId={setShowId}
-              showId={showId}
+              setIsModalOpen={setIsModalOpen}
             />
           );
         })
+      )}
+      {isModalOpen && (
+        <EditModal
+          showId={showId}
+          setIsModalOpen={setIsModalOpen}
+          animalList={animalList}
+          setEdit={setEdit}
+        />
       )}
     </div>
   );
