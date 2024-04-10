@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const CreateAnimal = ({ setCreate }) => {
-  const [name, setName] = useState("");
-  const [type, setType] = useState("");
-  const [weight, setWeight] = useState("");
+  const [name, setName] = useState('');
+  const [type, setType] = useState('');
+  const [weight, setWeight] = useState('');
   const [isInZoo, setIsInZoo] = useState(0);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
+    if (!name || !type || !weight) {
+      alert('please fill all fields');
+      return;
+    }
+
     setCreate({ name, type, weight, isInZoo });
 
-    console.log(name, type, weight, isInZoo);
-    setName("");
-    setType("");
-    setWeight("");
+    setName('');
+    setType('');
+    setWeight('');
     setIsInZoo(0);
   };
 

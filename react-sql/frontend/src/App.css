@@ -82,7 +82,7 @@
   background-color: rgb(133, 116, 93);
   border-radius: 10px;
   border: solid 1px rgb(100, 89, 74);
-  width: 50%;
+  width: fit-content;
 }
 
 ::placeholder {

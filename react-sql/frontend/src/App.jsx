@@ -1,8 +1,8 @@
-import "./App.css";
-import { AnimalsList } from "./components/AnimalsList";
-import CreateAnimal from "./components/CreateAnimal";
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import './App.css';
+import { AnimalsList } from './components/AnimalsList';
+import CreateAnimal from './components/CreateAnimal';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 
 function App() {
   const [animalList, setAnimalList] = useState([]);
@@ -18,7 +18,7 @@ function App() {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:5000/zoo/").then((res) => {
+    axios.get('http://localhost:5000/zoo/').then((res) => {
       setAnimalList(res.data);
     });
   }, [updateTime]);
@@ -28,7 +28,7 @@ function App() {
       return;
     }
     axios
-      .post("http://localhost:5000/zoo/", create)
+      .post('http://localhost:5000/zoo/', create)
       .then((res) => setUpdateTime(Date.now()));
   }, [create]);
 

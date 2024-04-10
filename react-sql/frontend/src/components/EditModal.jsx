@@ -1,12 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-export const EditModal = ({
-  setIsModalOpen,
-  animalList,
-  setEdit,
-  editId,
-  setEditId,
-}) => {
+export const EditModal = ({ setIsModalOpen, animalList, setEdit, editId }) => {
   const animal = animalList.find((animal) => animal.id === editId);
 
   const [name, setName] = useState(animal.name);
@@ -36,7 +30,7 @@ export const EditModal = ({
     e.preventDefault();
 
     setEdit({ name, type, weight, isInZoo });
-    alert("Updated");
+    alert('Updated');
     setIsModalOpen(false);
   };
 
