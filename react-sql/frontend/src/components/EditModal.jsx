@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-export const EditModal = ({ showId, setIsModalOpen, animalList, setEdit }) => {
-  const animal = animalList.find((animal) => animal.id === showId);
+export const EditModal = ({
+  setIsModalOpen,
+  animalList,
+  setEdit,
+  editId,
+  setEditId,
+}) => {
+  const animal = animalList.find((animal) => animal.id === editId);
 
   const [name, setName] = useState(animal.name);
   const [type, setType] = useState(animal.type);
@@ -28,8 +34,9 @@ export const EditModal = ({ showId, setIsModalOpen, animalList, setEdit }) => {
 
   const handleEditSubmit = (e) => {
     e.preventDefault();
-    setEdit({ name, type, weight, isInZoo, showId });
-    alert('Updated');
+
+    setEdit({ name, type, weight, isInZoo });
+    alert("Updated");
     setIsModalOpen(false);
   };
 
@@ -78,8 +85,8 @@ export const EditModal = ({ showId, setIsModalOpen, animalList, setEdit }) => {
             />
           </div>
 
-          <button onClick={() => handleEditSubmit}>Update</button>
-          <button onClick={() => handleCloseModal}>Close</button>
+          <button onClick={handleEditSubmit}>Update</button>
+          <button onClick={handleCloseModal}>Close</button>
         </form>
       </div>
     </div>

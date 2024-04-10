@@ -1,0 +1,6 @@
+body {
+  margin: 0;
+  background-image: url("../public/zoo.jpg");
+  object-fit: cover;
+  background-size: 100%;
+}

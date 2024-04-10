@@ -1,24 +1,25 @@
-import React from 'react';
+import React from "react";
 
-export const Animal = ({ animal, handleDelete, setShowId, setIsModalOpen }) => {
+export const Animal = ({ animal, handleDelete, setIsModalOpen, setEditId }) => {
   const { id, name, type, weight, isInZoo } = animal;
 
   const handleEdit = (id) => {
-    setShowId(id);
+    setEditId(id);
     setIsModalOpen(true);
   };
 
   return (
-    <li>
-      <span>id: {id} </span>
+    <li className="card">
       <span>name: {name} </span>
       <span>type: {type} </span>
       <span>weight: {weight} </span>
-      <span>isInZoo: {isInZoo === 1 ? 'Yes' : 'No'} </span>
-      <div>
+      <span>isInZoo: {isInZoo === 1 ? "Yes" : "No"} </span>
+      <span>
         <button onClick={() => handleEdit(id)}>Edit</button>
+      </span>
+      <span>
         <button onClick={() => handleDelete(id)}>Remove</button>
-      </div>
+      </span>
     </li>
   );
 };

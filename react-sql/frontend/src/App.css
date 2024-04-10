@@ -28,6 +28,11 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+  background-color: rgb(133, 116, 93);
+  border-radius: 10px;
+  border: solid 1px rgb(100, 89, 74);
+  width: 70%;
+  padding: 10px;
 }
 
 .modalForm {
@@ -36,4 +41,79 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+
+.createAnimalContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.animalList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 10px;
+  border: solid 1px rgb(100, 89, 74);
+}
+
+.animalList {
+  background-color: rgb(133, 116, 93);
+  border-radius: 10px;
+  border: solid 1px rgb(100, 89, 74);
+  width: 50%;
+}
+
+::placeholder {
+  color: black;
+  opacity: 1; /* Firefox */
+}
+
+input {
+  text-align: center;
+}
+
+.typeInput,
+.weightInput,
+.nameInput,
+.isInZooInput,
+button {
+  background-color: rgb(133, 116, 93);
+  border-radius: 10px;
+  border: solid 2px rgb(100, 89, 74);
+  height: 19px;
+  width: fit-content;
+}
+
+h3,
+h2 {
+  background-color: rgb(133, 116, 93);
+  border-radius: 10px;
+  border: solid 2px rgb(100, 89, 74);
+  width: fit-content;
+}
+
+.checkbox {
+  accent-color: rgb(66, 61, 55);
 }
