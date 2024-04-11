@@ -19,8 +19,7 @@ export const AnimalsContainer = () => {
       <AnimalInput setAnimalsData={setAnimalsData} />
       {animalsData.length === 0 ? (
         <div className="NoData">
-          {' '}
-          <h3>No Animals Found</h3>{' '}
+          <h3>No Animals Found</h3>
         </div>
       ) : (
         <AnimalDisplay
