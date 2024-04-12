@@ -41,6 +41,17 @@ function App() {
       .then((res) => setUpdateTime(Date.now()));
   }, [edit, editId]);
 
+  const sortHandler = (value) => {
+    const copy = [...animalList];
+    switch (value) {
+      case 'a-z':
+        setAnimalList(copy.sort((a, b) => a.weight - b.weight));
+        break;
+      case 'z-a':
+        setAnimalList(copy.sort((a, b) => b.weight - a.weight));
+    }
+  };
+
   return (
     <div className="App">
       <CreateAnimal setCreate={setCreate} />
