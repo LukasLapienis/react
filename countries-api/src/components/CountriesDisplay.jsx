@@ -1,10 +1,18 @@
 import React from 'react';
 
-export const CountriesDisplay = ({ countriesData }) => {
+export const CountriesDisplay = ({ countries }) => {
   return (
-    <div className="displayContainer">
-      {countriesData?.map((country) => {
-        return <div>{console.log(country)} 1</div>;
+    <div className="cardsContainer">
+      {countries.map((country, i) => {
+        return (
+          <div className="card" key={i}>
+            <img alt={country.flags.alt} src={country.flags.png} />
+            <h3>{country.name.common}</h3>
+            <p>Continent: {country.continents}</p>
+            <p>Capital: {country.capital}</p>
+            <button>More</button>
+          </div>
+        );
       })}
     </div>
   );
