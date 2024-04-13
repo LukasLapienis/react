@@ -3,6 +3,8 @@
   flex-direction: column;
   text-align: center;
   gap: 30px;
+  min-height: 90vh;
+  margin-bottom: 70px;
 }
 
 .header {
@@ -11,11 +13,22 @@
   margin: 10px;
 }
 
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 98%;
+  height: 60px;
+}
+
 .cardsContainer {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
+  margin: 20px;
 }
 
 .card {
@@ -26,6 +39,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  background-color: rgb(167, 141, 107);
 }
 
 img {
@@ -38,5 +52,33 @@ img {
 button {
   margin: 3px;
   border-radius: 10%;
-  width: 100px;
+  width: 120px;
+  height: 25px;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #252424cc;
+  height: 100%;
+  width: 100vw;
+}
+.modal {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 70%;
+  background-color: rgb(133, 116, 93);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  height: 60vh;
+  width: 60vw;
+  align-items: center;
+}
+
+.modal img {
+  height: 30vh;
+  width: 55vw;
 }

@@ -5,7 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(128, 128, 102);
+  background-image: url('../public/background.jpg');
+  object-fit: cover;
+  background-size: 100%;
 }
 
 code {

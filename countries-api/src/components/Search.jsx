@@ -1,12 +1,12 @@
 import React from 'react';
 
-export const Search = ({ searchFilter, searchFilterHandler }) => {
+export const Search = ({ searchFiltered, searchFilterHandler }) => {
   return (
     <div className="searchContainer">
       <input
         type="text"
         placeholder="search"
-        value={searchFilter}
+        value={searchFiltered}
         onChange={searchFilterHandler}
       />
     </div>

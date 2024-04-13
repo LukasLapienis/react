@@ -63,6 +63,7 @@
 }
 .modal {
   display: flex;
+  flex-direction: column;
   position: relative;
   width: 70%;
   background-color: rgb(133, 116, 93);
