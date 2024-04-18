@@ -1,15 +1,15 @@
-import './App.css';
-import { CountriesDisplay } from './components/CountriesDisplay';
-import { useState, useEffect } from 'react';
-import getAllCountriesData from './services/countriesService';
-import { Header } from './components/Header';
-import { Footer } from './components/Footer';
+import "./App.css";
+import { CountriesDisplay } from "./components/CountriesDisplay";
+import { useState, useEffect } from "react";
+import getAllCountriesData from "./services/countriesService";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 
 function App() {
   const [allCountries, setAllCountries] = useState([]);
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [regionFiltered, setRegionFiltered] = useState(null);
-  const [searchFiltered, setSearchFiltered] = useState('');
+  const [searchFiltered, setSearchFiltered] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +38,7 @@ function App() {
       (country) =>
         country.name.common.toLowerCase().includes(e.target.value.toLowerCase())
     );
+
     setFilteredCountries(filtered);
   };
 
