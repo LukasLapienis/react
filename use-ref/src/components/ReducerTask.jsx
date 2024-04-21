@@ -1,6 +1,6 @@
-import React, { useReducer, useState } from "react";
-import { addCustomNumberSquares } from "../actions/actionObjects";
-import { customNumberSquaresReducer } from "../reducers/squaresReducer";
+import React, { useReducer, useState } from 'react';
+import { addCustomNumberSquares } from '../actions/actionObjects';
+import { customNumberSquaresReducer } from '../reducers/squaresReducer';
 
 export const ReducerTask = () => {
   const [number, setNumber] = useState(0);
