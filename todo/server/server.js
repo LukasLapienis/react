@@ -12,6 +12,7 @@ app.use(express.json())
 app.use(cors())
 app.options('*', cors());
 app.use(express.urlencoded({ extended: false }));
+app.use('/api/toDo', require('./routes/toDoRoutes.js'))
 app.use(errorHandler)
 
 app.listen(process.env.PORT, () => {
