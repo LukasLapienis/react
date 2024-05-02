@@ -56,12 +56,12 @@ const deleteToDoById = asyncHandler(async (req, res) => {
    try {
       const result = await toDoService.deleteToDoById(id);
       if (result.deletedCount === 0) {
-         return res.status(404).json({ error: 'Work type not found' });
+         return res.status(404).json({ error: 'ToDo not found' });
       }
-      res.status(200).json({ message: 'Work type deleted successfully' });
+      res.status(200).json({ message: 'ToDo deleted successfully' });
    } catch (error) {
       res.status(400).json({
-         error: 'Failed to delete work type: ' + error.message,
+         error: 'Failed to delete toDo: ' + error.message,
       });
    }
 });
