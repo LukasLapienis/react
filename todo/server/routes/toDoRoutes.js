@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const {
-   createToDo,
-   getAllToDos,
-   updateToDoById,
-   deleteToDoById,
+  createToDo,
+  getAllToDos,
+  updateToDoById,
+  deleteToDoById,
 } = require('../controllers/toDoController.js');
 
 // @ /api/toDo
