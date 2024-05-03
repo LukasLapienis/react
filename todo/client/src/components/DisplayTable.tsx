@@ -1,12 +1,21 @@
-import { DataType } from '../interfaces/DataInterfaces';
+import { TableDisplayProps } from '../interfaces/DisplayInterfaces';
 
-export const DisplayTable = ({ data }: { data: DataType }) => {
+export const DisplayTable: React.FC<TableDisplayProps> = ({
+  data,
+  setData,
+  setIsModalOpen,
+  isModalOpen,
+  taskToEdit,
+  setTaskToEdit,
+}) => {
   return (
     <table>
-      <tr>
-        <td>sveiki</td>
-        <td>sveiki</td>
-      </tr>
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>DisplayTable</th>
+        </tr>
+      </thead>
     </table>
   );
 };
