@@ -1,4 +1,6 @@
-export const DisplayTable = () => {
+import { DataType } from '../interfaces/DataInterfaces';
+
+export const DisplayTable = ({ data }: { data: DataType }) => {
   return (
     <table>
       <tr>
