@@ -2,26 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  @apply box-border;
+}
+
 .headerButton {
   @apply w-24 rounded-xl border-2 border-gray-600 p-1 duration-700 hover:scale-110 hover:bg-gray-400 active:bg-gray-600;
 }
 
 .modal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #252424cc;
-  height: 100%;
-  width: 100vw;
+  @apply absolute left-0 top-0 flex h-full w-full items-center justify-center bg-[#252424cc];
 }
+
 .modal {
-  display: flex;
-  position: relative;
-  width: 70%;
-  background-color: rgb(133, 116, 93);
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px auto;
-  height: 200px;
-  width: 200px;
+  @apply relative flex min-h-fit min-w-fit items-center justify-center rounded-lg bg-teal-900 p-8;
+}
+
+.modal form {
+  @apply flex flex-col gap-2;
 }

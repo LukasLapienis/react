@@ -1,6 +1,9 @@
-export interface DataInterface {
+export interface NewTaskInterface {
   task: string;
   when: string;
+}
+
+export interface DataInterface extends NewTaskInterface {
   id: string;
 }
 
@@ -25,6 +28,7 @@ export interface DisplayProps {
   setData: React.Dispatch<React.SetStateAction<[] | DataInterface[]>>;
   data: DataInterface[];
   displayType: DisplayType;
+  setCreate: React.Dispatch<React.SetStateAction<NewTaskInterface>>;
 }
 
 export interface EditModalProps {
@@ -32,4 +36,8 @@ export interface EditModalProps {
   data: DataInterface[];
   setData: React.Dispatch<React.SetStateAction<DataInterface[]>>;
   taskToEdit: DataInterface;
+}
+
+export interface NewTaskFormProps {
+  setCreate: React.Dispatch<React.SetStateAction<NewTaskInterface>>;
 }

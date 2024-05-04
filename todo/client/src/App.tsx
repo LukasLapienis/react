@@ -8,8 +8,9 @@ import axios from 'axios';
 
 function App() {
   const [displayType, setDisplayType] = useState<DisplayType>('Table View');
-
   const [data, setData] = useState<DataInterface[] | []>([]);
+  const [updateTime, setUpdateTime] = useState(Date.now());
+  const [create, setCreate] = useState(Object);
 
   useEffect(() => {
     axios
@@ -20,7 +21,16 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [updateTime]);
+
+  useEffect(() => {
+    if (create === Object) {
+      return;
+    }
+    axios
+      .post('http://localhost:5000/api/toDo', create)
+      .then(() => setUpdateTime(Date.now()));
+  }, [create]);
 
   return (
     <>
@@ -29,7 +39,12 @@ function App() {
         displayType={displayType}
         setData={setData}
       />
-      <Display displayType={displayType} data={data} setData={setData} />
+      <Display
+        displayType={displayType}
+        data={data}
+        setData={setData}
+        setCreate={setCreate}
+      />
     </>
   );
 }
