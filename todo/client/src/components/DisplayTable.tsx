@@ -1,13 +1,6 @@
 import { TableDisplayProps } from '../interfaces/DisplayInterfaces';
 
-export const DisplayTable: React.FC<TableDisplayProps> = ({
-  data,
-  setData,
-  setIsModalOpen,
-  isModalOpen,
-  taskToEdit,
-  setTaskToEdit,
-}) => {
+export const DisplayTable: React.FC<TableDisplayProps> = ({}) => {
   return (
     <table>
       <thead>

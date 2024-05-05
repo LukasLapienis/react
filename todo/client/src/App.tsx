@@ -11,7 +11,7 @@ function App() {
   const [data, setData] = useState<DataInterface[] | []>([]);
   const [updateTime, setUpdateTime] = useState(Date.now());
   const [create, setCreate] = useState(Object);
-  const [taskToEdit, setTaskToEdit] = useState(Object);
+  const [editedTask, setEditedTask] = useState<DataInterface>(Object);
   const [taskToDelete, setTaskToDelete] = useState<string>('');
 
   useEffect(() => {
@@ -35,13 +35,13 @@ function App() {
   }, [create]);
 
   useEffect(() => {
-    if (Object.keys(taskToEdit).length === 0) {
+    if (Object.keys(editedTask).length === 0) {
       return;
     }
     axios
-      .post(`http://localhost:5000/api/toDo/${taskToEdit}`, taskToEdit)
+      .put(`http://localhost:5000/api/toDo/${editedTask._id}`, editedTask)
       .then(() => setUpdateTime(Date.now()));
-  }, [taskToEdit]);
+  }, [editedTask]);
 
   useEffect(() => {
     if (taskToDelete === '') {
@@ -63,9 +63,9 @@ function App() {
       <Display
         displayType={displayType}
         data={data}
-        setData={setData}
         setCreate={setCreate}
         setTaskToDelete={setTaskToDelete}
+        setEditedTask={setEditedTask}
       />
     </>
   );

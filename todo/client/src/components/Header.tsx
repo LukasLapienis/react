@@ -16,7 +16,7 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="flex w-5/6 justify-between">
+    <header className="flex w-full max-w-4xl justify-between">
       <h1 className="text-4xl">To Do List</h1>
       <div className="flex gap-4">
         <button className="headerButton" onClick={() => handleDisplayType()}>

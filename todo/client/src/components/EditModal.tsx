@@ -3,20 +3,28 @@ import { useState } from 'react';
 
 export const EditModal: React.FC<EditModalProps> = ({
   setIsModalOpen,
-  setData,
   taskToEdit,
+  setEditedTask,
 }) => {
   const [task, setTask] = useState<string>(taskToEdit.task);
   const [when, setWhen] = useState<string>(taskToEdit.when);
 
-  const handleCloseModal = () => {
+  const handleCloseModal = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     setIsModalOpen(false);
   };
 
+  const handleEdit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setEditedTask({ task: task, when: when, _id: taskToEdit._id });
+    setIsModalOpen(false);
+    alert('updated');
+  };
+
   return (
-    <div className="modal-overlay" onClick={handleCloseModal}>
+    <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <form className="modalForm">
+        <form onSubmit={(e) => handleEdit(e)} className="modalForm">
           <div>
             <label htmlFor="taskEdit">Task:</label>
             <input
@@ -37,8 +45,8 @@ export const EditModal: React.FC<EditModalProps> = ({
               onChange={(e) => setWhen(e.target.value)}
             />
           </div>
-          <button onClick={handleCloseModal}>Update</button>
-          <button onClick={() => handleCloseModal()}>Close</button>
+          <button type="submit">Update</button>
+          <button onClick={(e) => handleCloseModal(e)}>Close</button>
         </form>
       </div>
     </div>

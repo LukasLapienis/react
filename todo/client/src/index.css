@@ -7,11 +7,11 @@
 }
 
 body {
-  @apply bg-gray-700;
+  @apply bg-[url('./assets/bg.jpg')] object-cover;
 }
 
 .headerButton {
-  @apply w-24 rounded-xl border-2 border-gray-600 p-1 duration-700 hover:scale-110 hover:bg-gray-400 active:bg-gray-600;
+  @apply w-fit text-wrap rounded-xl border-2 border-gray-600 p-1 duration-700 hover:scale-110 hover:bg-gray-400 active:bg-gray-600;
 }
 
 .modal-overlay {
