@@ -13,10 +13,6 @@ export const EditModal: React.FC<EditModalProps> = ({
     setIsModalOpen(false);
   };
 
-  //   const handleTaskEdit = (e: React.FormEvent<HTMLInputElement>): void => {
-  //     setTask(e.currentTarget.value);
-  //   };
-
   return (
     <div className="modal-overlay" onClick={handleCloseModal}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>

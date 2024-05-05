@@ -4,7 +4,7 @@ export interface NewTaskInterface {
 }
 
 export interface DataInterface extends NewTaskInterface {
-  id: string;
+  _id: string;
 }
 
 export type DisplayType = 'Table View' | 'List View';
@@ -22,6 +22,7 @@ export interface TableDisplayProps {
   isModalOpen: boolean;
   setTaskToEdit: React.Dispatch<React.SetStateAction<DataInterface>>;
   taskToEdit: DataInterface;
+  setTaskToDelete: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface DisplayProps {
@@ -29,6 +30,7 @@ export interface DisplayProps {
   data: DataInterface[];
   displayType: DisplayType;
   setCreate: React.Dispatch<React.SetStateAction<NewTaskInterface>>;
+  setTaskToDelete: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface EditModalProps {
