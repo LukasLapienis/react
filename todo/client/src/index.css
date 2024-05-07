@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply box-border;
+}
+
+body {
+  @apply bg-[url('./assets/bg.jpg')] object-cover;
+}
+
+.headerButton {
+  @apply w-fit text-wrap rounded-xl border-2 border-gray-600 p-1 duration-700 hover:scale-110 hover:bg-gray-400 active:bg-gray-600;
+}
+
+.modal-overlay {
+  @apply absolute left-0 top-0 flex h-full w-full items-center justify-center bg-[#252424cc];
+}
+
+.modal {
+  @apply relative flex min-h-fit min-w-fit items-center justify-center rounded-lg bg-teal-900 p-8;
+}
+
+.modal form {
+  @apply flex flex-col gap-2;
+}

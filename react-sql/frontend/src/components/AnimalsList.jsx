@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Animal } from "./Animal";
-import { EditModal } from "./EditModal";
+import React, { useState } from 'react';
+import { Animal } from './Animal';
+import { EditModal } from './EditModal';
 
 export const AnimalsList = ({
   animalList,
@@ -34,7 +34,6 @@ export const AnimalsList = ({
           animalList={animalList}
           setEdit={setEdit}
           editId={editId}
-          setEditId={setEditId}
         />
       )}
     </div>
